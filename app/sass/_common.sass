@@ -1,0 +1,37 @@
++font("BlissPro-Bold", BlissPro-Bold)
++font("BlissPro-ExtraBold", BlissPro-ExtraBold)
++font("BlissPro-Italic", BlissPro-Italic)
++font("BlissPro-Light", BlissPro-Light)
++font("BlissPro-Medium", BlissPro-Medium)
++font("BlissPro-MediumItalic", BlissPro-MediumItalic)
++font("BlissPro", BlissPro)
+
+=f($name, $font-size: null, $letter-spacing: null)
+  $font-family: null
+  @if $name == "r"
+    $font-family: "BlissPro"
+  @if $name == "l"
+    $font-family: "BlissPro-Light"
+  @if $name == "md"
+    $font-family: "BlissPro-Medium"
+  @if $name == "mdi"
+    $font-family: "BlissPro-MediumItalic"
+  @if $name == "b"
+    $font-family: "BlissPro-Bold"
+  @if $name == "eb"
+    $font-family: "BlissPro-ExtraBold"
+  @if $name == "i"
+    $font-family: "BlissPro-Italic"
+    font-style: normal
+  font-family: $font-family, Helvetica, Arial, sans-serif
+  font-weight: normal
+  @if $font-size != null
+    font-size: $font-size + px
+  @if $letter-spacing != null
+    letter-spacing: $letter-spacing + em
+
+body
+  background: #FFF
+  line-height: 1.4
+  +f(r,16)
+
