@@ -12,8 +12,76 @@
 
 .header__buttons
   float: right
+  .btn
+    vertical-align: middle
 
+
+.nav
+  display: inline-block
+  vertical-align: middle
+  font-size: 16px
+  line-height: 2
+  color: #FFF
+  margin-left: em(80,16)
 
 .nav__item
   display: inline-block
   vertical-align: middle
+  margin-right: em(40,16)
+
+.nav__link
+  display: inline-block
+  +f(r)
+  color: #FFF
+  text-decoration: none
+  +trans(color)
+  &:hover
+    color: $color-orange
+
+.lang
+  position: relative
+  top: -1px
+  white-space: nowrap
+  color: #616161
+  cursor: pointer
+  .i-sort-desc
+    vertical-align: middle
+    font-size: 4px
+    margin-left: 10px
+    +trans(color)
+  &:hover,
+  &.is-active
+    color: $color-orange
+    .lang__list
+      opacity: 1
+      visibility: visible
+
+.lang__list
+  position: absolute
+  top: 100%
+  left: -5px
+  background: #FFF
+  padding: 5px
+  border-radius: 3px
+  opacity: 0
+  visibility: hidden
+  transition: all 0.3s ease
+
+.lang__list-item
+  margin-top: 5px
+  &:first-child
+    margin-top: 0
+
+.lang__current
+  display: inline-block
+  vertical-align: middle
+
+.lang__link
+  display: block
+  text-decoration: none
+  color: inherit
+  +trans
+  &:hover
+    box-shadow: 0 0 0 2px $color-orange
+
+

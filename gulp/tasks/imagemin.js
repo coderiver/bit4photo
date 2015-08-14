@@ -7,7 +7,7 @@ var config   = require('../config');
 gulp.task('imagemin', function() {
     gulp.src([
             config.src.img + '/**/*.{jpg,png,svg,gif}',
-            '!' + config.src.img + '/icons/**/*',
+            '!' + config.src.img + '/icons/**/*'
         ])
         .pipe(plumber({
             errorHandler: config.errorHandler
@@ -20,4 +20,11 @@ gulp.task('imagemin', function() {
             }]
         }))
         .pipe(gulp.dest(config.dest.img));
+});
+
+gulp.task('imagemin:watch', function() {
+    gulp.watch([
+        config.src.img + '/**/*',
+        '!' + config.src.img + '/icons/**/*'
+    ], ['imagemin']);
 });

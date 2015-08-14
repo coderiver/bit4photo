@@ -6,57 +6,45 @@ var buffer      = require('vinyl-buffer');
 var uglify      = require('gulp-uglify');
 var gutil       = require('gulp-util');
 var sourcemaps  = require('gulp-sourcemaps');
-var browserSync = require('browser-sync');
 var size        = require('gulp-size');
 var gulpif      = require('gulp-if');
 var config      = require('../config');
 
 var props = {
-    entries: ['./' + config.src.js + '/main.coffee'],
+    entries: ['./' + config.src.js + '/app.coffee'],
     dest: [config.dest.js],
+    transform: ['coffeeify'],
     extensions: ['.js', '.coffee'],
-    outputName: 'main.js',
+    outputName: 'app.js',
     debug: true,
     cache: {},
     packageCache: {}
 };
 
-gulp.task('scripts:watch', function() {
-    var b = watchify(browserify(props));
-
-    function bundle() {
-        return b.bundle()
-            .on('error', config.errorHandler)
-            .pipe(source('main.js'))
-            .pipe(buffer())
-            .pipe(sourcemaps.init({
-                loadMaps: true
-            }))
-            .pipe(gulpif(config.production, uglify()))
-            .pipe(sourcemaps.write('./'))
-            .pipe(gulp.dest(config.dest.js))
-            .pipe(browserSync.reload({
-                stream: true,
-                once: true
-            }));
-    }
-
-    b.on('update', bundle);
-    b.on('log', gutil.log);
-
-    return bundle();
-});
-
-gulp.task('scripts:build', function() {
-    return browserify(props)
+function bundle(bundler) {
+    return bundler
         .bundle()
         .on('error', config.errorHandler)
-        .pipe(source('main.js'))
+        .pipe(source('app.js'))
         .pipe(buffer())
         .pipe(size())
-        .pipe(sourcemaps.init({loadMaps: true}))
+        .pipe(sourcemaps.init({ loadMaps: true }))
         .pipe(gulpif(config.production, uglify()))
         .pipe(size())
         .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(config.dest.js))
+        .pipe(gulp.dest(config.dest.js));
+}
+
+gulp.task('scripts', function() {
+    var bundler = browserify(props);
+    return bundle(bundler);
+});
+
+gulp.task('scripts:watch', function() {
+    var bundler = watchify(browserify(props));
+    bundler.on('log', gutil.log);
+    bundler.on('update', function() {
+        bundle(bundler);
+    });
+    return bundle(bundler);
 });

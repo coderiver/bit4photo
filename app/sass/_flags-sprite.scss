@@ -1,0 +1,81 @@
+$flags: (
+  de: (X: 0px, Y:0px, W: 40px, H: 30px, TW: 140px, TH: 110px, IMG: '../img/flags-sprite.png'),
+  en: (X: -50px, Y:0px, W: 40px, H: 30px, TW: 140px, TH: 110px, IMG: '../img/flags-sprite.png'),
+  es: (X: 0px, Y:-40px, W: 40px, H: 30px, TW: 140px, TH: 110px, IMG: '../img/flags-sprite.png'),
+  fr: (X: -50px, Y:-40px, W: 40px, H: 30px, TW: 140px, TH: 110px, IMG: '../img/flags-sprite.png'),
+  it: (X: -100px, Y:0px, W: 40px, H: 30px, TW: 140px, TH: 110px, IMG: '../img/flags-sprite.png'),
+  nl: (X: -100px, Y:-40px, W: 40px, H: 30px, TW: 140px, TH: 110px, IMG: '../img/flags-sprite.png'),
+  tr: (X: 0px, Y:-80px, W: 40px, H: 30px, TW: 140px, TH: 110px, IMG: '../img/flags-sprite.png'),
+);
+
+
+// Gets an attribute from the sass map
+@function icon-attr($icon, $attr) {
+  $icon: map-get($flags, $icon);
+  @return map-get($icon, $attr);
+}
+
+@mixin flag($iconName) {
+  background-image: url(icon-attr($iconName, IMG));
+  width: icon-attr($iconName, W);
+  height: icon-attr($iconName, H);
+  background-position: icon-attr($iconName, X) icon-attr($iconName, Y);
+}
+
+
+.flag-de {
+  width: ceil(40px / 2);
+  height: ceil(30px / 2);
+  background-image: url('../img/flags-sprite.png');
+  background-position: ceil(0px / 2) ceil(0px / 2);
+  background-size: ceil(140px / 2) ceil(110px / 2);
+}
+
+.flag-en {
+  width: ceil(40px / 2);
+  height: ceil(30px / 2);
+  background-image: url('../img/flags-sprite.png');
+  background-position: ceil(-50px / 2) ceil(0px / 2);
+  background-size: ceil(140px / 2) ceil(110px / 2);
+}
+
+.flag-es {
+  width: ceil(40px / 2);
+  height: ceil(30px / 2);
+  background-image: url('../img/flags-sprite.png');
+  background-position: ceil(0px / 2) ceil(-40px / 2);
+  background-size: ceil(140px / 2) ceil(110px / 2);
+}
+
+.flag-fr {
+  width: ceil(40px / 2);
+  height: ceil(30px / 2);
+  background-image: url('../img/flags-sprite.png');
+  background-position: ceil(-50px / 2) ceil(-40px / 2);
+  background-size: ceil(140px / 2) ceil(110px / 2);
+}
+
+.flag-it {
+  width: ceil(40px / 2);
+  height: ceil(30px / 2);
+  background-image: url('../img/flags-sprite.png');
+  background-position: ceil(-100px / 2) ceil(0px / 2);
+  background-size: ceil(140px / 2) ceil(110px / 2);
+}
+
+.flag-nl {
+  width: ceil(40px / 2);
+  height: ceil(30px / 2);
+  background-image: url('../img/flags-sprite.png');
+  background-position: ceil(-100px / 2) ceil(-40px / 2);
+  background-size: ceil(140px / 2) ceil(110px / 2);
+}
+
+.flag-tr {
+  width: ceil(40px / 2);
+  height: ceil(30px / 2);
+  background-image: url('../img/flags-sprite.png');
+  background-position: ceil(0px / 2) ceil(-80px / 2);
+  background-size: ceil(140px / 2) ceil(110px / 2);
+}
+

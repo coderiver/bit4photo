@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "iconfont";
+  src: url('../fonts/iconfont.eot');
+  src: url('../fonts/iconfont.eot?#iefix') format('eot'),
+    url('../fonts/iconfont.woff') format('woff'),
+    url('../fonts/iconfont.woff2') format('woff2'),
+    url('../fonts/iconfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$i-sort-asc: "\EA01";
+$i-sort-desc: "\EA02";
+
+
+%i {
+  font-family: "iconfont";
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: auto;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.i {
+  @extend %i;
+  display: inline-block;
+}
+
+.i-lg {
+  font-size: 1.3333333333333333em;
+  line-height: 0.75em;
+  vertical-align: -15%;
+}
+.i-2x { font-size: 2em; }
+.i-3x { font-size: 3em; }
+.i-4x { font-size: 4em; }
+.i-5x { font-size: 5em; }
+.i-fw {
+  width: 1.2857142857142858em;
+  text-align: center;
+}
+
+.i-sort-asc:before { content: $i-sort-asc; }
+.i-sort-desc:before { content: $i-sort-desc; }

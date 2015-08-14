@@ -28,7 +28,6 @@
   display: inline-block;
 }
 
-
 .<%= className %>-lg {
   font-size: 1.3333333333333333em;
   line-height: 0.75em;
@@ -43,5 +42,5 @@
   text-align: center;
 }
 
-<% _.each(glyphs, function(glyph) { %>.<%= className %>-<%= glyph.name %>:before { content: "\<%= glyph.unicode[0].charCodeAt(0).toString(16).toUpperCase() %>" }
+<% _.each(glyphs, function(glyph) { %>.<%= className %>-<%= glyph.name %>:before { content: $<%= className %>-<%= glyph.name %>; }
 <% }); %>

@@ -9,9 +9,6 @@
   "author": "bushidos || coderiver",
   "license": "ISC",
   "browser": {},
-  "browserify": {
-    "transform": ["coffeeify"]
-  },
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
     "browser-sync": "^2.8.2",
@@ -31,7 +28,7 @@
     "gulp-plumber": "^1.0.1",
     "gulp-postcss": "^5.1.10",
     "gulp-rename": "^1.2.2",
-    "gulp-ruby-sass": "^1.0.5",
+    "gulp-sass": "^2.0.4",
     "gulp-size": "^1.2.3",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-svgmin": "^1.2.0",
@@ -46,5 +43,7 @@
     "watchify": "^3.3.1",
     "yargs": "^3.17.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^2.1.4"
+  }
 }

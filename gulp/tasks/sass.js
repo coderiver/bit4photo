@@ -1,5 +1,5 @@
 var gulp         = require('gulp');
-var sass         = require('gulp-ruby-sass');
+var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var postcss      = require('gulp-postcss');
 var autoprefixer = require('autoprefixer-core');
@@ -9,16 +9,23 @@ var processors = [
     autoprefixer({
         browsers: ['last 4 versions'],
         cascade: false
-  })
+    })
 ];
 
 gulp.task('sass', function() {
-    return sass(config.src.sass, {
-        sourcemap: true,
-        style: 'compact'
-    })
-    .on('error', config.errorHandler)
-    .pipe(postcss(processors))
-    .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(config.dest.css));
+    return gulp
+        .src(config.src.sass + '/*.{sass,scss}')
+        .pipe(sourcemaps.init())
+        .pipe(sass({
+            outputStyle: config.production ? 'compact' : 'nested', // nested, expanded, compact, compressed
+            precision: 5
+        }))
+        .on('error', config.errorHandler)
+        .pipe(postcss(processors))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest(config.dest.css));
+});
+
+gulp.task('sass:watch', function() {
+    gulp.watch(config.src.sass + '/**/*', ['sass']);
 });

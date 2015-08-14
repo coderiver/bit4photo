@@ -2,7 +2,6 @@ var gulp    = require('gulp');
 var jade    = require('gulp-jade');
 var plumber = require('gulp-plumber');
 var changed = require('gulp-changed');
-var filter  = require('gulp-filter');
 var config  = require('../config');
 
 // compile only changed jade files
@@ -29,4 +28,9 @@ gulp.task('jade:all', function() {
             pretty: true
         }))
         .pipe(gulp.dest(config.dest.html));
+});
+
+gulp.task('jade:watch', function() {
+    gulp.watch(config.src.jade + '/**/[^_]*.jade', ['jade']);
+    gulp.watch(config.src.jade + '/**/_*.jade', ['jade:all']);
 });

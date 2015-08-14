@@ -4,40 +4,27 @@ var config      = require('../config');
 
 gulp.task('default', [
     'serve',
-    'watch',
-    'scripts:watch'
+    'watch'
 ]);
 
-gulp.task('build', function() {
+gulp.task('build', ['clean'],  function(cb) {
     runSequence(
-        'clean',
-        'sprite:svg',
         'iconfont',
+        'sprite:svg',
         'imagemin',
         'sass',
         'jade:all',
-        'copy:fonts',
-        'scripts:build'
+        'scripts',
+        'copy:fonts'
     );
+    cb();
 });
 
-gulp.task('copy:fonts', function() {
-    gulp.src(config.src.fonts + '/*.{ttf,woff,woff2,eot}')
-        .on('error', function(err) {
-            config.errorHandler(err);
-        })
-        .pipe(gulp.dest(config.dest.fonts));
-});
-
-gulp.task('watch', function() {
-    gulp.watch(config.src.sass + '/**/*', ['sass']);
-    gulp.watch(config.src.jade + '/**/[^_]*.jade', ['jade']);
-    gulp.watch(config.src.jade + '/**/_*.jade', ['jade:all']);
-    gulp.watch([
-        config.src.img + '/**/*',
-        '!' + config.src.img + '/icons/**/*'
-    ], ['imagemin']);
-    gulp.watch(config.src.iconsSvg + '/*.svg', ['sprite:svg']);
-    gulp.watch(config.src.iconsPng + '/*.png', ['sprite:png']);
-    gulp.watch(config.src.iconsFont + '/*.svg', ['iconfont']);
-});
+gulp.task('watch', [
+    'sass:watch',
+    'jade:watch',
+    'iconfont:watch',
+    'imagemin:watch',
+    'sprite:svg:watch',
+    'scripts:watch'
+]);
