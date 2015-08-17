@@ -11,9 +11,49 @@ block content
   .toparea
     include partials/_header
     .toparea__main.l-center
-      .toparea__col
-        h1.toparea__title
-          | Bitcoin Photo Contest
-        h2.topare__subtitle
-          | Submit your bitcoin photo and win € 1000!
+      .toparea__columns
+        .toparea__col.toparea__hero-text
+          h1.toparea__title
+            | Bitcoin Photo Contest
+          h2.toparea__subtitle
+            | Submit your bitcoin photo<br>and win <strong>€ 1000!</strong>
+        .toparea__col.mission
+          strong.mission__title
+            | Our Mission
+          p.mission__text
+            | Bitcoin lacks good photos - many articles reuse same
+            | images of physical coins. We want to change this with
+            | your help, and give back to the community with
+            | bit4coin's Bitcoin Photo Contest
+          em.footnote
+            | Prizes will be delivered in bit4coin vouchers!
+      .toparea__submit
+        p
+          | <i class="i i-stopwatch color-orange"></i>
+          | Take and submit your photo before <em class="color-orange">Sep 30!</em>
+        button.btn.btn_large.btn_orange(type="button")
+          | <i class="i i-camera"></i> Submit photo
+      .toparea__footer
+        .prize
+          .prize__item
+            .prize__item-inner
+              i.i.i-prize-2
+              span.prize__large
+                | € 500
+              span.prize__small
+                | 2nd prize
+          .prize__item
+            .prize__item-inner
+              i.i.i-prize-1
+              span.prize__large
+                | € 1000
+              span.prize__small
+                | 1st prize
+          .prize__item
+            .prize__item-inner
+              i.i.i-prize-3
+              span.prize__large
+                | € 250
+              span.prize__small
+                | 3rd prize
   //END toparea

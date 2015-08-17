@@ -1,3 +1,5 @@
+// generated automatically via gulp task 'sprite:svg'
+
 <% _.each(symbols, function(symbol) { %>.<%= symbol.name %> {
   width: <%= symbol.ratio %>em;
   height: 1em;

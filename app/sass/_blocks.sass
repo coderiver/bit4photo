@@ -1,5 +1,6 @@
 .main-logo
   display: inline-block
+  vertical-align: top
   text-decoration: none
   +f(r,27)
   color: #FFF
@@ -19,6 +20,12 @@
   border-radius: 5px
   box-sizing: border-box
   color: #FFF
+  .i
+    position: relative
+  .i-camera
+    top: 1px
+    margin-right: 13px
+    font-size: 15px
 
 .btn_o
   border: 2px solid rgba(#FFF, 0.2)
@@ -28,4 +35,35 @@
   &:hover
     border-color: $color-orange
 
-.btn_o-orange
+.btn_large
+  line-height: 50px
+  height: 50px
+  min-width: 190px
+  +f(md, 18)
+
+.btn_orange
+  background: $color-orange
+  color: #FFF
+  +trans
+  transition-property: color, background
+  &:hover
+    background: darken($color-orange, 5%)
+
+
+.btn_w190
+  min-width: 190px
+
+
+.footnote
+  display: block
+  +f(i, 14)
+  line-height: 1.4
+  color: #ACACAC
+  &:before
+    content: "* "
+    color: $color-orange
+
+
+.color-orange
+  color: $color-orange
+

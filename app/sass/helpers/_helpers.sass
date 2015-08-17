@@ -9,3 +9,12 @@
 
 =trans($what: all, $dur: 0.15s, $easing: ease)
   transition: $what $dur $easing
+
+*
+  &.clearfix
+    +clr
+
+.clearfix
+  display: table
+  width: 100%
+  clear: both

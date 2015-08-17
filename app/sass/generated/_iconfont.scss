@@ -1,3 +1,5 @@
+// generated automatically via gulp-task 'iconfont'
+
 @font-face {
   font-family: "iconfont";
   src: url('../fonts/iconfont.eot');
@@ -9,8 +11,13 @@
   font-style: normal;
 }
 
-$i-sort-asc: "\EA01";
-$i-sort-desc: "\EA02";
+$i-camera: "\EA01";
+$i-prize-1: "\EA02";
+$i-prize-2: "\EA03";
+$i-prize-3: "\EA04";
+$i-sort-asc: "\EA05";
+$i-sort-desc: "\EA06";
+$i-stopwatch: "\EA07";
 
 
 %i {
@@ -43,5 +50,10 @@ $i-sort-desc: "\EA02";
   text-align: center;
 }
 
+.i-camera:before { content: $i-camera; }
+.i-prize-1:before { content: $i-prize-1; }
+.i-prize-2:before { content: $i-prize-2; }
+.i-prize-3:before { content: $i-prize-3; }
 .i-sort-asc:before { content: $i-sort-asc; }
 .i-sort-desc:before { content: $i-sort-desc; }
+.i-stopwatch:before { content: $i-stopwatch; }
